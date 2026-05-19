@@ -217,7 +217,7 @@ footer{background:var(--navy);padding:50px 5% 28px;color:rgba(255,255,255,0.6)}
 <nav>
   <div class="nav-logo">
     <div style="width:38px;height:38px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:var(--navy);font-size:1rem">QP</div>
-    <span class="brand">Quality <em>Prints</em></span>
+    <span class="brand">Quality <em>Prints</em> and Paper Bags</span>
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -573,19 +573,41 @@ footer{background:var(--navy);padding:50px 5% 28px;color:rgba(255,255,255,0.6)}
 <script>
 function handleSubmit(e){
   e.preventDefault();
-  var btn=e.target.querySelector('.form-submit');
-  btn.textContent='Sending...';
+  var form=e.target;
+  var btn=form.querySelector('.form-submit');
+  btn.textContent='Opening WhatsApp...';
   btn.disabled=true;
+
+  var name=form.querySelector('input[placeholder="Full name"]').value||'Not provided';
+  var company=form.querySelector('input[placeholder="Business / Brand name"]').value||'Not provided';
+  var phone=form.querySelector('input[type="tel"]').value||'Not provided';
+  var email=form.querySelector('input[type="email"]').value||'Not provided';
+  var product=form.querySelector('select').value||'Not specified';
+  var qty=form.querySelectorAll('select')[1].value||'Not specified';
+  var city=form.querySelector('input[placeholder="Your location"]').value||'Not provided';
+  var msg=form.querySelector('textarea').value||'No message';
+
+  var text='Hello Quality Printers! I have an enquiry:%0A%0A'
+    +'*Name:* '+name+'%0A'
+    +'*Company:* '+company+'%0A'
+    +'*Phone:* '+phone+'%0A'
+    +'*Email:* '+email+'%0A'
+    +'*Product Required:* '+product+'%0A'
+    +'*Quantity:* '+qty+'%0A'
+    +'*City:* '+city+'%0A'
+    +'*Message:* '+msg;
+
+  window.open('https://wa.me/919994622933?text='+text,'_blank');
+
+  document.getElementById('successMsg').style.display='block';
+  btn.textContent='Sent via WhatsApp ✓';
+  form.reset();
+
   setTimeout(function(){
-    document.getElementById('successMsg').style.display='block';
-    btn.textContent='Enquiry Sent!';
-    e.target.reset();
-    setTimeout(function(){
-      btn.textContent='Send Enquiry →';
-      btn.disabled=false;
-      document.getElementById('successMsg').style.display='none';
-    },5000);
-  },1200);
+    btn.textContent='Send Enquiry →';
+    btn.disabled=false;
+    document.getElementById('successMsg').style.display='none';
+  },5000);
 }
 </script>
 </body>
