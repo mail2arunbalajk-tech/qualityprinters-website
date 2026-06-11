@@ -587,3 +587,24 @@ footer .domain{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--green
   .hero-btns{flex-direction:column}
   .hero-btns .btn-fill,.hero-btns .btn-outline{text-align:center}
 }
+
+/* FAQ */
+.faq{max-width:840px;margin:0 auto;padding:56px 40px 72px}
+.faq h2{font-size:26px;font-weight:400;margin-bottom:24px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;background:var(--white)}
+.faq-item summary{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;
+  padding:16px 20px;font-size:17px;color:var(--text);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';font-family:'DM Sans',sans-serif;font-size:18px;color:var(--green2);
+  margin-left:16px;transition:transform var(--transition);
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item[open] summary{color:var(--green)}
+.faq-item p{
+  padding:0 20px 16px;font-family:'DM Sans',sans-serif;font-size:14px;
+  color:var(--muted);line-height:1.7;
+}
+@media(max-width:640px){.faq{padding:40px 20px 56px}}
